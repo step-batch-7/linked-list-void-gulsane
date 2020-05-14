@@ -144,3 +144,13 @@ Element reduce(List_ptr list, Element initial_element, Reducer reducer)
 
   return result;
 }
+
+void forEach(List_ptr list, ElementProcessor processor)
+{
+  Node_ptr p_walker = list->first;
+  for (size_t i = 0; i < list->length; i++)
+  {
+    (*processor)(p_walker->element);
+    p_walker = p_walker->next;
+  }
+}

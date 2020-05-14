@@ -57,5 +57,8 @@ int main()
   printf("sum of numbers of list(reduce)\n");
   printf("%d\n", *(Int_Ptr)sum_of_numbers);
 
+  printf("printing numbers of list(for_each)\n");
+  forEach(list, &print_number);
+
   return 0;
 }
