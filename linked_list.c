@@ -18,3 +18,29 @@ Node_ptr create_node(Element element)
   new_node->next = NULL;
   return new_node;
 }
+
+void display_list(List_ptr list, Displayer displayer)
+{
+  Node_ptr p_walker = list->first;
+  for (size_t i = 0; i < list->length; i++)
+  {
+    (*displayer)(p_walker->element);
+    p_walker = p_walker->next;
+  }
+}
+
+Status add_to_list(List_ptr list, Element element)
+{
+  Node_ptr new_node = create_node(element);
+  if (list->first == NULL)
+  {
+    list->first = new_node;
+  }
+  else
+  {
+    list->last->next = new_node;
+  }
+  list->last = new_node;
+  list->length++;
+  return Success;
+}
