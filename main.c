@@ -23,6 +23,13 @@ Status is_even(Element element)
   return Failure;
 }
 
+Element add_numbers(Element num1, Element num2)
+{
+  Int_Ptr sum = (Int_Ptr)malloc(sizeof(int));
+  *sum = *(Int_Ptr)num1 + *(Int_Ptr)num2;
+  return sum;
+}
+
 int main()
 {
   Int_Ptr number;
@@ -43,5 +50,12 @@ int main()
   List_ptr even_numbers = filter(list, &is_even);
   printf("even numbers(filter)\n");
   display_list(even_numbers, &print_number);
+
+  Int_Ptr init = malloc(sizeof(int));
+  *init = 0;
+  Element sum_of_numbers = reduce(list, init, &add_numbers);
+  printf("sum of numbers of list(reduce)\n");
+  printf("%d\n", *(Int_Ptr)sum_of_numbers);
+
   return 0;
 }

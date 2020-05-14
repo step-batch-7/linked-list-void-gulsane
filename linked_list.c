@@ -130,3 +130,17 @@ List_ptr filter(List_ptr list, Predicate predicate)
 
   return new_list;
 }
+
+Element reduce(List_ptr list, Element initial_element, Reducer reducer)
+{
+  Element result = initial_element;
+  Node_ptr p_walker = list->first;
+
+  for (size_t i = 0; i < list->length; i++)
+  {
+    result = (*reducer)(result, p_walker->element);
+    p_walker = p_walker->next;
+  }
+
+  return result;
+}
