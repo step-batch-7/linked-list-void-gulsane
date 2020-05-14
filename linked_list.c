@@ -44,3 +44,17 @@ Status add_to_list(List_ptr list, Element element)
   list->length++;
   return Success;
 }
+
+Status add_to_start(List_ptr list, Element element)
+{
+  Node_ptr new_node = create_node(element);
+  Node_ptr second_node = list->first;
+  list->first = new_node;
+  if (list->last == NULL)
+  {
+    list->last = new_node;
+  }
+  list->first->next = second_node;
+  list->length++;
+  return Success;
+}
