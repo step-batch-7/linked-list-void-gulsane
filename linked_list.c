@@ -58,3 +58,32 @@ Status add_to_start(List_ptr list, Element element)
   list->length++;
   return Success;
 }
+
+Status insert_at(List_ptr list, Element element, int position)
+{
+  if (position < 0 || position > list->length)
+  {
+    return Failure;
+  }
+  Node_ptr new_node = create_node(element);
+  Prev_Current_Pair prev_current_pair;
+  prev_current_pair.current = list->first;
+  prev_current_pair.prev = NULL;
+
+  while (position != 0)
+  {
+    prev_current_pair.prev = prev_current_pair.current;
+    prev_current_pair.current = prev_current_pair.current->next;
+    position--;
+  }
+
+  if (prev_current_pair.prev == NULL)
+  {
+    return add_to_start(list, element);
+  }
+
+  prev_current_pair.prev->next = new_node;
+  new_node->next = prev_current_pair.current;
+  list->length++;
+  return Success;
+}
