@@ -4,6 +4,11 @@
 
 void print_number(Element element)
 {
+  if (element == NULL)
+  {
+    printf("number not found at location you have entered\n");
+    return;
+  }
   printf("%d\n", *(Int_Ptr)element);
 }
 
@@ -59,6 +64,10 @@ int main()
 
   printf("printing numbers of list(for_each)\n");
   forEach(list, &print_number);
+
+  Element removed_element = remove_at(list, 0);
+  printf("removed element(remove_at)\n");
+  print_number(removed_element);
 
   return 0;
 }

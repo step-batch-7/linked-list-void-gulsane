@@ -154,3 +154,41 @@ void forEach(List_ptr list, ElementProcessor processor)
     p_walker = p_walker->next;
   }
 }
+
+Element remove_at(List_ptr list, int position)
+{
+  if (position >= list->length || position < 0)
+  {
+    return NULL;
+  }
+
+  Prev_Current_Pair pre_current_pair;
+  pre_current_pair.prev = NULL;
+  pre_current_pair.current = list->first;
+  while (position > 0)
+  {
+    pre_current_pair.prev = pre_current_pair.current;
+    pre_current_pair.current = pre_current_pair.current->next;
+    position--;
+  }
+
+  Node_ptr node_to_remove = pre_current_pair.current;
+  Node_ptr *ptr_to_set = &list->first;
+
+  if (pre_current_pair.prev != NULL)
+  {
+    ptr_to_set = &pre_current_pair.prev->next;
+  }
+
+  *ptr_to_set = pre_current_pair.current->next;
+
+  if (pre_current_pair.current->next == NULL)
+  {
+    list->last = pre_current_pair.prev;
+  }
+
+  list->length--;
+  Element removed_element = node_to_remove->element;
+  free(node_to_remove);
+  return removed_element;
+}
