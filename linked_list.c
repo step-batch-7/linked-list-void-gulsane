@@ -197,3 +197,8 @@ Element remove_from_start(List_ptr list)
 {
   return remove_at(list, 0);
 }
+
+Element remove_from_end(List_ptr list)
+{
+  return remove_at(list, list->length - 1);
+}

@@ -65,7 +65,7 @@ int main()
   printf("printing numbers of list(for_each)\n");
   forEach(list, &print_number);
 
-  Element removed_element = remove_from_start(list);
+  Element removed_element = remove_from_end(list);
   printf("removed element(remove_at)\n");
   print_number(removed_element);
 
