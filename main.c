@@ -90,5 +90,9 @@ int main()
   status = add_unique(list, number_to_add, &are_numbers_equal);
   printf("adding unique number to the list(add_unique)\n");
   forEach(list, &print_number);
+
+  status = clear_list(list);
+  printf("list after clearing(clear_list)\n");
+  forEach(list, &print_number);
   return 0;
 }
