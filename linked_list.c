@@ -265,11 +265,9 @@ Status clear_list(List_ptr list)
   }
 
   Element element_to_remove;
-  Node_ptr p_walker = list->first;
 
-  while (p_walker != NULL)
+  while (list->first != NULL)
   {
-    p_walker = p_walker->next;
     element_to_remove = remove_from_start(list);
     free(element_to_remove);
   }
