@@ -192,3 +192,8 @@ Element remove_at(List_ptr list, int position)
   free(node_to_remove);
   return removed_element;
 }
+
+Element remove_from_start(List_ptr list)
+{
+  return remove_at(list, 0);
+}
