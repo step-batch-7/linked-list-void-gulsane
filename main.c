@@ -75,10 +75,14 @@ int main()
   forEach(list, &print_number);
 
   Int_Ptr number_to_remove = malloc(sizeof(int));
-  *number_to_remove = 11;
+  *number_to_remove = 4;
   Element removed_element = remove_first_occurrence(list, number_to_remove, &are_numbers_equal);
-  printf("removed element(remove_at)\n");
+  printf("removed element(remove_fist_occurrence)\n");
   print_number(removed_element);
 
+  *number_to_remove = 5;
+  List_ptr removed_elements_list = remove_all_occurrences(list, number_to_remove, &are_numbers_equal);
+  printf("removed elements list(remove_all_occurrences)\n");
+  display_list(removed_elements_list, print_number);
   return 0;
 }

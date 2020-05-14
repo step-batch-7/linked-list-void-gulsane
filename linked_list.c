@@ -216,3 +216,27 @@ Element remove_first_occurrence(List_ptr list, Element element, Matcher matcher)
   }
   return NULL;
 }
+
+List_ptr remove_all_occurrences(List_ptr list, Element element, Matcher matcher)
+{
+  List_ptr removed_element_list = create_list();
+
+  Prev_Current_Pair pair;
+  pair.current = list->first;
+  pair.prev = NULL;
+
+  Element removed_element;
+
+  while (pair.current != NULL)
+  {
+    pair.prev = pair.current;
+    pair.current = pair.current->next;
+    if ((*matcher)(pair.prev->element, element))
+    {
+      removed_element = remove_first_occurrence(list, element, matcher);
+      add_to_list(removed_element_list, removed_element);
+    }
+  }
+
+  return removed_element_list;
+}
