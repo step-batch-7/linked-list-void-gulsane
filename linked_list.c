@@ -101,3 +101,15 @@ List_ptr reverse(List_ptr list)
 
   return reverse_list;
 }
+
+List_ptr map(List_ptr list, Mapper mapper)
+{
+  List_ptr new_list = create_list();
+  Node_ptr p_walker = list->first;
+  for (size_t i = 0; i < list->length; i++)
+  {
+    add_to_list(new_list, (*mapper)(p_walker->element));
+    p_walker = p_walker->next;
+  }
+  return new_list;
+}
