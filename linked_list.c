@@ -87,3 +87,17 @@ Status insert_at(List_ptr list, Element element, int position)
   list->length++;
   return Success;
 }
+
+List_ptr reverse(List_ptr list)
+{
+  List_ptr reverse_list = create_list();
+  Node_ptr p_walker = list->first;
+
+  for (size_t i = 0; i < list->length; i++)
+  {
+    add_to_start(reverse_list, p_walker->element);
+    p_walker = p_walker->next;
+  }
+
+  return reverse_list;
+}
