@@ -14,6 +14,15 @@ Element give_double_of(Element element)
   return double_of_number;
 }
 
+Status is_even(Element element)
+{
+  if (*(Int_Ptr)element % 2 == 0)
+  {
+    return Success;
+  }
+  return Failure;
+}
+
 int main()
 {
   Int_Ptr number;
@@ -30,5 +39,9 @@ int main()
   List_ptr double_of_numbers = map(list, &give_double_of);
   printf("double of numbers(mapping)\n");
   display_list(double_of_numbers, &print_number);
+
+  List_ptr even_numbers = filter(list, &is_even);
+  printf("even numbers(filter)\n");
+  display_list(even_numbers, &print_number);
   return 0;
 }

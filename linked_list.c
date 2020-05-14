@@ -113,3 +113,20 @@ List_ptr map(List_ptr list, Mapper mapper)
   }
   return new_list;
 }
+
+List_ptr filter(List_ptr list, Predicate predicate)
+{
+  List_ptr new_list = create_list();
+  Node_ptr p_walker = list->first;
+
+  for (size_t i = 0; i < list->length; i++)
+  {
+    if ((*predicate)(p_walker->element))
+    {
+      add_to_list(new_list, p_walker->element);
+    }
+    p_walker = p_walker->next;
+  }
+
+  return new_list;
+}
