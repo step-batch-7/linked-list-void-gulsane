@@ -84,5 +84,11 @@ int main()
   List_ptr removed_elements_list = remove_all_occurrences(list, number_to_remove, &are_numbers_equal);
   printf("removed elements list(remove_all_occurrences)\n");
   display_list(removed_elements_list, print_number);
+
+  Int_Ptr number_to_add = malloc(sizeof(int));
+  *number_to_add = 100;
+  status = add_unique(list, number_to_add, &are_numbers_equal);
+  printf("adding unique number to the list(add_unique)\n");
+  forEach(list, &print_number);
   return 0;
 }
