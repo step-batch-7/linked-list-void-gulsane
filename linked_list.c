@@ -202,3 +202,17 @@ Element remove_from_end(List_ptr list)
 {
   return remove_at(list, list->length - 1);
 }
+
+Element remove_first_occurrence(List_ptr list, Element element, Matcher matcher)
+{
+  Node_ptr p_walker = list->first;
+  for (size_t i = 0; i < list->length; i++)
+  {
+    if ((*matcher)(p_walker->element, element))
+    {
+      return remove_at(list, i);
+    }
+    p_walker = p_walker->next;
+  }
+  return NULL;
+}

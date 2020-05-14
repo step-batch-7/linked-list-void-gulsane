@@ -6,7 +6,7 @@ void print_number(Element element)
 {
   if (element == NULL)
   {
-    printf("number not found at location you have entered\n");
+    printf("number not found\n");
     return;
   }
   printf("%d\n", *(Int_Ptr)element);
@@ -33,6 +33,15 @@ Element add_numbers(Element num1, Element num2)
   Int_Ptr sum = (Int_Ptr)malloc(sizeof(int));
   *sum = *(Int_Ptr)num1 + *(Int_Ptr)num2;
   return sum;
+}
+
+Status are_numbers_equal(Element num1, Element num2)
+{
+  if (*(Int_Ptr)num1 == *(Int_Ptr)num2)
+  {
+    return Success;
+  }
+  return Failure;
 }
 
 int main()
@@ -65,7 +74,9 @@ int main()
   printf("printing numbers of list(for_each)\n");
   forEach(list, &print_number);
 
-  Element removed_element = remove_from_end(list);
+  Int_Ptr number_to_remove = malloc(sizeof(int));
+  *number_to_remove = 11;
+  Element removed_element = remove_first_occurrence(list, number_to_remove, &are_numbers_equal);
   printf("removed element(remove_at)\n");
   print_number(removed_element);
 
