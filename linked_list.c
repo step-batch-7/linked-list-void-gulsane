@@ -65,6 +65,12 @@ Status insert_at(List_ptr list, Element element, int position)
   {
     return Failure;
   }
+
+  if (position == list->length)
+  {
+    return add_to_list(list, element);
+  }
+  
   Node_ptr new_node = create_node(element);
   Prev_Current_Pair prev_current_pair;
   prev_current_pair.current = list->first;
